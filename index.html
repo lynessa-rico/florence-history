@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Florence: A History</title>
+<meta name="description" content="A short history of Florence, Italy, from its Roman founding to the present day.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f1e6;
+    --ink: #2b231c;
+    --muted: #6b5d50;
+    --terracotta: #b5532f;
+    --gold: #a8842c;
+    --rule: #dccfb9;
+    --card: #fffaf1;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1c1814;
+      --ink: #efe6d6;
+      --muted: #b3a48f;
+      --terracotta: #e07a52;
+      --gold: #d4ae55;
+      --rule: #3a322a;
+      --card: #241f1a;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 1.075rem/1.7 "Source Serif 4", Georgia, "Times New Roman", serif;
+  }
+  .wrap { max-width: 46rem; margin: 0 auto; padding: 0 1.25rem; }
+
+  header.hero {
+    text-align: center;
+    padding: 5rem 1.25rem 3.5rem;
+    border-bottom: 1px solid var(--rule);
+    background:
+      radial-gradient(ellipse at 50% 120%, color-mix(in srgb, var(--terracotta) 18%, transparent), transparent 60%);
+  }
+  .eyebrow {
+    font-size: .8rem; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--terracotta); margin: 0 0 .75rem;
+  }
+  h1, h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; line-height: 1.15; }
+  h1 { font-size: clamp(2.8rem, 8vw, 5rem); margin: 0; font-weight: 700; }
+  .subtitle { font-style: italic; color: var(--muted); font-size: 1.2rem; margin: .75rem 0 0; }
+
+  nav.toc {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--rule);
+  }
+  nav.toc ul {
+    list-style: none; margin: 0 auto; padding: .6rem 1.25rem;
+    display: flex; gap: 1.25rem; overflow-x: auto; max-width: 60rem;
+    font-size: .9rem; white-space: nowrap;
+  }
+  nav.toc a { color: var(--muted); text-decoration: none; }
+  nav.toc a:hover { color: var(--terracotta); }
+
+  section { padding: 3rem 0 1rem; scroll-margin-top: 3rem; }
+  .era {
+    font-size: .8rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--gold); margin: 0;
+  }
+  h2 { font-size: clamp(1.9rem, 4.5vw, 2.6rem); margin: .2rem 0 1rem; }
+  p { margin: 0 0 1.1rem; }
+  a { color: var(--terracotta); }
+
+  blockquote {
+    margin: 1.75rem 0; padding: 1rem 1.25rem;
+    border-left: 3px solid var(--terracotta);
+    background: var(--card);
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.3rem; font-style: italic;
+  }
+
+  .timeline { list-style: none; padding: 0; margin: 1.5rem 0 0; border-left: 2px solid var(--rule); }
+  .timeline li { position: relative; padding: 0 0 1.1rem 1.4rem; }
+  .timeline li::before {
+    content: ""; position: absolute; left: -7px; top: .55rem;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--terracotta);
+  }
+  .timeline strong { color: var(--terracotta); font-variant-numeric: tabular-nums; margin-right: .4rem; }
+
+  .people {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 1rem; margin: 1.5rem 0;
+  }
+  .person { background: var(--card); border: 1px solid var(--rule); padding: 1rem 1.1rem; border-radius: 4px; }
+  .person h3 { margin: 0 0 .25rem; font-size: 1.35rem; }
+  .person .dates { font-size: .85rem; color: var(--muted); margin: 0 0 .4rem; }
+  .person p:last-child { margin: 0; font-size: .95rem; }
+
+  footer {
+    margin-top: 3rem; padding: 2rem 1.25rem 3rem; text-align: center;
+    border-top: 1px solid var(--rule); color: var(--muted); font-size: .9rem;
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="eyebrow">Firenze · Tuscany · Italy</p>
+  <h1>Florence</h1>
+  <p class="subtitle">Two thousand years on the banks of the Arno</p>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <ul>
+    <li><a href="#roman">Roman Origins</a></li>
+    <li><a href="#medieval">Medieval Commune</a></li>
+    <li><a href="#medici">The Medici</a></li>
+    <li><a href="#renaissance">Renaissance</a></li>
+    <li><a href="#grand-duchy">Grand Duchy</a></li>
+    <li><a href="#modern">Modern Florence</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+  </ul>
+</nav>
+
+<main class="wrap">
+
+  <section id="roman">
+    <p class="era">59 BC – 5th century</p>
+    <h2>Roman Origins</h2>
+    <p>Florence began as <em>Florentia</em>, a colony for veteran soldiers founded in 59 BC, traditionally credited to Julius Caesar. Its name is usually read as "flourishing," and the settlement was laid out as a classic Roman <em>castrum</em>: a rectangular grid with two main streets crossing at a forum. That forum survives as today's Piazza della Repubblica, and the old grid still shapes the streets of the city centre.</p>
+    <p>Sited where the Via Cassia crossed the Arno, Florentia grew into a modest trading town with a theatre, baths and an amphitheatre, whose curved outline can still be traced in the buildings around Via Torta near Santa Croce. After Rome's collapse the city passed through the hands of Ostrogoths, Byzantines, Lombards and Franks, shrinking considerably during the turbulent early Middle Ages.</p>
+  </section>
+
+  <section id="medieval">
+    <p class="era">11th – 14th century</p>
+    <h2>The Medieval Commune</h2>
+    <p>Under Countess Matilda of Tuscany in the late 11th century, Florence began to recover. By 1115 it had effectively become a self-governing <em>comune</em>, and over the next two centuries it grew into one of the largest and richest cities in Europe.</p>
+    <p>Its wealth rested on wool and cloth production and, above all, banking. Florentine families such as the Bardi and Peruzzi lent money to kings across Europe, and in 1252 the city minted the <strong>gold florin</strong>, a coin so trusted that it became a standard currency of international trade.</p>
+    <p>Politics were fierce. The city was torn between the <strong>Guelphs</strong>, who backed the Pope, and the <strong>Ghibellines</strong>, who backed the Holy Roman Emperor; later the victorious Guelphs split into "Black" and "White" factions. The poet <strong>Dante Alighieri</strong> was exiled in 1302 in one of these struggles, and wrote the <em>Divine Comedy</em> far from home, helping make the Tuscan dialect the basis of modern Italian.</p>
+    <p>Government lay with the powerful merchant and craft guilds (<em>arti</em>), which built the Palazzo Vecchio as the seat of the republic and began the great cathedral of Santa Maria del Fiore in 1296. Then, in 1348, the <strong>Black Death</strong> struck, killing perhaps half the population.</p>
+  </section>
+
+  <section id="medici">
+    <p class="era">1434 – 1494</p>
+    <h2>The Rise of the Medici</h2>
+    <p>The Medici family made its fortune in banking, becoming bankers to the Papacy. In 1434 <strong>Cosimo de' Medici</strong> returned from a brief exile and became the city's unofficial ruler. Florence remained a republic in name, but Cosimo steered it through wealth, patronage and carefully placed allies.</p>
+    <p>His grandson <strong>Lorenzo de' Medici</strong>, "Lorenzo il Magnifico," led the city from 1469. He survived the <strong>Pazzi Conspiracy</strong> of 1478, an assassination attempt in the cathedral that killed his brother Giuliano, and became a celebrated diplomat, poet and patron of artists and scholars.</p>
+    <blockquote>Florence did not invent the Renaissance alone, but for a few generations it was the place where its ideas were most concentrated.</blockquote>
+  </section>
+
+  <section id="renaissance">
+    <p class="era">15th – early 16th century</p>
+    <h2>Cradle of the Renaissance</h2>
+    <p>Florence is widely regarded as the birthplace of the Italian Renaissance. Guild, church and family commissions, combined with a revival of interest in classical Greek and Roman learning, produced an extraordinary concentration of talent.</p>
+    <p>In 1436 the cathedral was crowned by <strong>Brunelleschi's dome</strong>, still the largest brick dome ever built. Ghiberti cast the bronze "Gates of Paradise" for the Baptistery; Masaccio pioneered linear perspective in painting; Donatello revived free-standing sculpture; and Botticelli painted <em>The Birth of Venus</em>. Humanist scholars such as Marsilio Ficino translated Plato and debated philosophy under Medici patronage.</p>
+
+    <div class="people">
+      <div class="person">
+        <h3>Filippo Brunelleschi</h3>
+        <p class="dates">1377 – 1446</p>
+        <p>Architect of the cathedral dome; helped formalise linear perspective.</p>
+      </div>
+      <div class="person">
+        <h3>Sandro Botticelli</h3>
+        <p class="dates">c. 1445 – 1510</p>
+        <p>Painter of <em>Primavera</em> and <em>The Birth of Venus</em>.</p>
+      </div>
+      <div class="person">
+        <h3>Leonardo da Vinci</h3>
+        <p class="dates">1452 – 1519</p>
+        <p>Trained in Verrocchio's Florentine workshop.</p>
+      </div>
+      <div class="person">
+        <h3>Michelangelo</h3>
+        <p class="dates">1475 – 1564</p>
+        <p>Carved the <em>David</em> (1501–1504), a symbol of the republic.</p>
+      </div>
+      <div class="person">
+        <h3>Niccolò Machiavelli</h3>
+        <p class="dates">1469 – 1527</p>
+        <p>Republican official and author of <em>The Prince</em>.</p>
+      </div>
+    </div>
+
+    <p>The era was not without upheaval. After Lorenzo's death in 1492 the Medici were expelled, and the Dominican friar <strong>Girolamo Savonarola</strong> dominated the city, staging the famous "Bonfire of the Vanities" in 1497 before he was himself executed in the Piazza della Signoria in 1498.</p>
+  </section>
+
+  <section id="grand-duchy">
+    <p class="era">1530 – 1859</p>
+    <h2>The Grand Duchy of Tuscany</h2>
+    <p>The Medici returned and, after a siege of the city by imperial and papal forces in 1529–1530, the republic ended for good. In 1569 <strong>Cosimo I de' Medici</strong> was made the first <strong>Grand Duke of Tuscany</strong>. He commissioned the Uffizi as government offices, and the Medici moved into the Palazzo Pitti across the river, linked to the Palazzo Vecchio by the elevated Vasari Corridor.</p>
+    <p>Florence remained a centre of science: <strong>Galileo Galilei</strong> served as court mathematician to the Medici. When the family line died out in 1737, Tuscany passed to the House of Habsburg-Lorraine. The last Medici, Anna Maria Luisa, bequeathed the family's vast art collections to the city on the condition that they never leave Florence, which is why so many treasures remain there today.</p>
+  </section>
+
+  <section id="modern">
+    <p class="era">1859 – present</p>
+    <h2>Modern Florence</h2>
+    <p>Tuscany joined the new Kingdom of Italy in 1860, and from <strong>1865 to 1871 Florence served as the capital of Italy</strong> before the capital moved to Rome. The old city walls were demolished and replaced with wide boulevards in this period of rebuilding.</p>
+    <p>During the Second World War, retreating German forces blew up every bridge across the Arno in 1944 except the <strong>Ponte Vecchio</strong>. On 4 November 1966 the Arno burst its banks in a catastrophic <strong>flood</strong> that damaged thousands of artworks and rare books; volunteers from around the world, nicknamed the "Mud Angels," came to help rescue them.</p>
+    <p>In 1982 the historic centre was inscribed as a <strong>UNESCO World Heritage Site</strong>. Today Florence is the capital of Tuscany, a city of around 360,000 people and one of the most visited places on earth, its streets still carrying the shape of the Roman colony that began it all.</p>
+  </section>
+
+  <section id="timeline">
+    <p class="era">At a glance</p>
+    <h2>Timeline</h2>
+    <ul class="timeline">
+      <li><strong>59 BC</strong> Roman colony of Florentia founded</li>
+      <li><strong>1115</strong> Florence becomes a self-governing commune</li>
+      <li><strong>1252</strong> First gold florin minted</li>
+      <li><strong>1296</strong> Construction of the cathedral begins</li>
+      <li><strong>1302</strong> Dante exiled from the city</li>
+      <li><strong>1348</strong> The Black Death devastates the population</li>
+      <li><strong>1434</strong> Cosimo de' Medici takes power</li>
+      <li><strong>1436</strong> Brunelleschi's dome completed</li>
+      <li><strong>1478</strong> Pazzi Conspiracy</li>
+      <li><strong>1498</strong> Savonarola executed</li>
+      <li><strong>1504</strong> Michelangelo's <em>David</em> unveiled</li>
+      <li><strong>1569</strong> Cosimo I becomes Grand Duke of Tuscany</li>
+      <li><strong>1737</strong> Medici line ends; Habsburg-Lorraine rule begins</li>
+      <li><strong>1865</strong> Florence becomes capital of Italy (until 1871)</li>
+      <li><strong>1944</strong> All bridges but the Ponte Vecchio destroyed</li>
+      <li><strong>1966</strong> The great flood of the Arno</li>
+      <li><strong>1982</strong> Historic centre named a UNESCO World Heritage Site</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <p>A brief history of Florence, Italy.</p>
+</footer>
+
+</body>
+</html>
